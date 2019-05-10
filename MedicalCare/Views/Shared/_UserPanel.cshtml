@@ -1,0 +1,93 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MedicalCare.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ApplicationUser appUser = await UserManager.GetUserAsync(User);
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img src="../@appUser.ProfilePicture" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>@appUser.Fullname</p>
+            <a href="#">
+                <i class="fa fa-circle text-success"></i>
+                
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    <small>Online as  Super Admin.</small>
+
+                }
+                else if (User.IsInRole("Admin"))
+
+                {
+                    <small>Online as  Admin.</small>
+
+                }
+
+                else if (User.IsInRole("Doctor"))
+
+                {
+                    <small>Online as  Doctor.</small>
+
+                }
+                else if (User.IsInRole("Nurse"))
+
+                {
+                    <small>Online as  Nurse.</small>
+
+                }
+                else if (User.IsInRole("Patient"))
+
+                {
+                    <small>Online as  Patient</small>
+
+                }
+                else if (User.IsInRole("Pharmacist"))
+
+                {
+                    <small>Online as  Pharmacist</small>
+
+                }
+
+                else if (User.IsInRole("Laboratorist"))
+
+                {
+                    <small>Online as  Laboratorist</small>
+
+                }
+
+                else if (User.IsInRole("Accountant"))
+
+                {
+                    <small>Online as  Accountant</small>
+
+                }
+                else if (User.IsInRole("Receptionist"))
+
+                {
+                    <small>Online as  Receptionist</small>
+
+                }
+                else if (User.IsInRole("Employee"))
+
+                {
+                    <small>Online as Employee</small>
+
+                }
+                else
+                {
+                    <small>Online as  Non</small>
+                }
+            </a>
+        </div>
+    </div>
+
+}

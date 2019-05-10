@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "CreateAccount";
+    Layout = "~/Views/Shared/_LayoutAdminlte.cshtml";
+}
+
+<div class="box-body">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Create">
+
+                <div class="form-group">
+                    <input type="submit" value="Continue" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

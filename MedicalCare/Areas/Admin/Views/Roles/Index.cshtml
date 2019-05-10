@@ -1,0 +1,62 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+@{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_LayoutAdminlte.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Role Management</h3>
+                @if (User.IsInRole("SuperAdmin"))
+                    {
+                <div class="box-tools">
+                    @Html.ActionLink("New Role", "Create", null, new { @class = "btn btn-primary", style = "padding: 7px;" })
+                </div>
+                    }
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        @if (User.IsInRole("SuperAdmin"))
+                            {
+                        <th>
+
+                        </th>
+                            }
+                    </tr>
+
+                    @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        @if (User.IsInRole("SuperAdmin"))
+                                {
+                        <td>
+
+
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i></a>
+
+                        </td>
+                                }
+                    </tr>
+                        }
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+

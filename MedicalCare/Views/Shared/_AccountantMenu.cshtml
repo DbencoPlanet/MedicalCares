@@ -1,0 +1,46 @@
+﻿
+<li class="header">ACCOUNTANT NAVIGATION</li>
+<li><a href="@Url.Action("Index", "DashBoard", new { area="Admin"})"><i class="fa fa-dashboard"></i> <span>Accountant Dashboard</span></a></li>
+
+<li><a href="@Url.Action("Index", "NoticeBoard", new { area="Admin"})"><i class="fa fa-bullhorn"></i> <span> Noticeboard</span></a></li>
+
+<li><a href="@Url.Action("Index", "Patient", new { area="Admin"})"><i class="fa fa-users"></i>Patient </a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-dollar"></i> <span> Accountant Manager</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("AddAccount", "Account", new { area="Accountant"})"><i class="fa fa-money"></i> <span> Add Account</span></a></li>
+        <li><a href="@Url.Action("Index", "Account", new { area="Accountant"})"><i class="fa fa-money"></i> <span> Account List</span></a></li>
+        <li><a href="@Url.Action("AllInvoice", "Account", new { area="Accountant"})"><i class="fa fa-credit-card"></i> <span> Add Invoice</span></a></li>
+        <li><a href="@Url.Action("Invoice", "Account", new { area="Accountant"})"><i class="fa fa-credit-card"></i> <span> Invoice List</span></a></li>
+        <li><a href="@Url.Action("AddPayment", "Account", new { area="Accountant"})"><i class="fa fa-credit-card"></i> <span> Add Payment</span></a></li>
+        <li><a href="@Url.Action("Payment", "Account", new { area="Accountant"})"><i class="fa fa-credit-card"></i> <span> Payment List</span></a></li>
+        <li><a href="@Url.Action("Report", "Account", new { area="Accountant"})"><i class="fa fa-newspaper-o"></i> <span> Report</span></a></li>
+        <li><a href="@Url.Action("Debit", "Account", new { area="Accountant"})"><i class="fa fa-newspaper-o"></i> <span> Debit Report</span></a></li>
+        <li><a href="@Url.Action("Credit", "Account", new { area="Accountant"})"><i class="fa fa-newspaper-o"></i> <span> Credit Report</span></a></li>
+
+    </ul>
+</li>
+x
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-envelope"></i> <span> Messages</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Compose", "Messages", new { area = "Admin" })"><i class="fa fa-pencil-square"></i> <span> New Message</span></a></li>
+        <li><a href="@Url.Action("Inbox", "Messages", new { area = "Admin" })"><i class="fa fa-inbox"></i> <span> Inbox</span></a></li>
+        <li><a href="@Url.Action("Sent", "Messages", new { area = "Admin" })"><i class="fa fa-send-o"></i> <span> Sent</span></a></li>
+
+    </ul>
+</li>
+
+

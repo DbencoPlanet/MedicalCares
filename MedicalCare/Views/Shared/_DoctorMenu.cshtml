@@ -1,0 +1,112 @@
+﻿
+<li class="header">DOCTOR NAVIGATION</li>
+<li><a href="@Url.Action("Index", "DashBoard", new { area="Admin"})"><i class="fa fa-dashboard"></i> <span>Doctor Dashboard</span></a></li>
+<li><a href="@Url.Action("Index", "Doctor", new { area="Admin"})"><i class="fa  fa-user-md"></i> Doctor</a></li>
+<li><a href="@Url.Action("Index", "Patient", new { area="Admin"})"><i class="fa fa-user"></i>Patient </a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-user"></i> <span> Schedule</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Create", "Schedule", new { area="Admin"})"><i class="fa fa-calendar"></i>  Add Schedule</a></li>
+
+        <li><a href="@Url.Action("Index", "Schedule", new { area="Admin"})"><i class="fa fa-calendar"></i> Schedule List</a></li>
+
+    </ul>
+</li>
+
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-calendar"></i> <span> Appointment</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Create", "Appointment", new { area="Admin"})"><i class="fa fa-calendar"></i> Add Appointment</a></li>
+        <li><a href="@Url.Action("Index", "Appointment", new { area="Admin"})"><i class="fa fa-calendar"></i> Appointment List </a></li>
+        <li><a href="@Url.Action("Assign_by_doctor", "Appointment", new { area="Admin"})"><i class="fa fa-calendar"></i> Assign by Doctor</a></li>
+        <li><a href="@Url.Action("Assign_to_doctor", "Appointment", new { area="Admin"})"><i class="fa fa-calendar"></i> Assign to Me</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-stethoscope"></i> <span> Prescription</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("AddCaseStudy", "Prescription", new { area="Doctor"})"><i class="fa fa-stethoscope"></i> <span> Add Patient Case Study</span></a></li>
+        <li><a href="@Url.Action("CaseStudy", "Prescription", new { area="Doctor"})"><i class="fa fa-stethoscope"></i> <span>Patient Case Study List</span></a></li>
+        <li><a href="@Url.Action("AddPrescription", "Prescription", new { area="Doctor"})"><i class="fa fa-stethoscope"></i> <span>Add Prescription </span></a></li>
+        <li><a href="@Url.Action("Prescription", "Prescription", new { area="Doctor"})"><i class="fa fa-stethoscope"></i> <span>Prescription List</span></a></li>
+
+    </ul>
+</li>
+
+<li><a href="@Url.Action("Index", "NoticeBoard", new { area="Admin"})"><i class="fa fa-bullhorn"></i> <span> Noticeboard</span></a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-hospital-o"></i> <span> Hospital Activities</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Add_Birth_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-heart"></i> <span> Add Birth Report</span></a></li>
+        <li><a href="@Url.Action("Birth_Report", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-heart"></i> <span> Birth Report</span></a></li>
+        <li><a href="@Url.Action("Add_Death_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-heartbeat"></i> <span> Add Death Report</span></a></li>
+        <li><a href="@Url.Action("Death_Report", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-heartbeat"></i> <span> Death Report</span></a></li>
+        <li><a href="@Url.Action("Add_Operation_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Add Operation Report</span></a></li>
+        <li><a href="@Url.Action("Operation_Report", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Operation Report</span></a></li>
+        <li><a href="@Url.Action("AddInvestigation_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Add Investigation Report</span></a></li>
+        <li><a href="@Url.Action("Investigation_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Investigation Report</span></a></li>
+       
+
+    </ul>
+</li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-bed"></i> <span> Bed Manager</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Bed_Assign", "Bed", new { area="Admin"})"><i class="fa fa-bed"></i> <span> Bed Assign</span></a></li>
+        <li><a href="@Url.Action("Assign_List", "Bed", new { area="Admin"})"><i class="fa fa-bed"></i> Bed Assign List</a></li>
+        <li><a href="@Url.Action("Report", "Bed", new { area="Admin"})"><i class="fa fa-bed"></i>Report</a></li>
+
+
+    </ul>
+</li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-envelope"></i> <span> Messages</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Compose", "Messages", new { area = "Admin" })"><i class="fa fa-pencil"></i> <span> New Message</span></a></li>
+        <li><a href="@Url.Action("Inbox", "Messages", new { area = "Admin" })"><i class="fa fa-inbox"></i> <span> Inbox</span></a></li>
+        <li><a href="@Url.Action("Sent", "Messages", new { area = "Admin" })"><i class="fa fa-send-o"></i> <span> Sent</span></a></li>
+
+    </ul>
+</li>
+
+

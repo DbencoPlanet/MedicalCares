@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MedicalCare.Models.Entities.Setting>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminlte.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h2>Medical Cares Settings</h2>
+            </div>
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ApplicationTitle)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmailAddress)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PhoneNo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Favicon)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Logo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Currency)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Initial)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ApplicationTitle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Favicon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Logo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Currency)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Initial)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

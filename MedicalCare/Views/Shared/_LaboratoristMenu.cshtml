@@ -1,0 +1,41 @@
+﻿
+<li class="header">LABORATORY NAVIGATION</li>
+<li><a href="@Url.Action("Index", "DashBoard", new { area="Admin"})"><i class="fa fa-dashboard"></i> <span>Laboratory Dashboard</span></a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-hospital-o"></i> <span> Hospital Activities</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+      
+        <li><a href="@Url.Action("AddInvestigation_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Add Investigation Report</span></a></li>
+        <li><a href="@Url.Action("Investigation_Reort", "HospitalActivities", new { area = "Admin" })"><i class="fa fa-stethoscope"></i> <span> Investigation Report</span></a></li>
+
+
+    </ul>
+</li>
+
+
+<li><a href="@Url.Action("Index", "NoticeBoard", new { area="Admin"})"><i class="fa fa-stethoscope"></i> <span> Noticeboard</span></a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-envelope-o"></i> <span> Messages</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Compose", "Messages", new { area = "Admin" })"><i class="fa fa-pencil"></i> <span> New Message</span></a></li>
+        <li><a href="@Url.Action("Inbox", "Messages", new { area = "Admin" })"><i class="fa fa-inbox"></i> <span> Inbox</span></a></li>
+        <li><a href="@Url.Action("Sent", "Messages", new { area = "Admin" })"><i class="fa fa-send-o"></i> <span> Sent</span></a></li>
+
+    </ul>
+</li>
+
+
