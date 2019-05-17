@@ -31,6 +31,10 @@ namespace MedicalCare.Services
         //Task CreateDefaultOrganization(string applicationUserId,
         //    ApplicationDbContext context);
 
+        Task CreateDefaultSuperAdmin();
+
+        Task CreateDefaultAdmin();
+
         Task<string> UploadFile(List<IFormFile> files, IHostingEnvironment env);
 
     }

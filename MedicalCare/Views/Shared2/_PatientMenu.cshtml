@@ -1,0 +1,39 @@
+﻿
+<li class="header">DOCTOR NAVIGATION</li>
+<li><a href="@Url.Action("Index", "DashBoard", new { area="Admin"})"><i class="fa fa-dashboard"></i> <span>Status Dashboard</span></a></li>
+<li><a href="@Url.Action("Index", "Patient", new { area="Patient"})"><i class="fa fa-user"></i>Patient </a></li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-user"></i> <span> Document</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Create", "Document", new { area="Patient"})"><i class="fa fa-file-word-o"></i>  Add Document </a></li>
+
+        <li><a href="@Url.Action("Index", "Document", new { area="Patient"})"><i class="fa fa-file-word-o"></i>Document List </a></li>
+
+    </ul>
+</li>
+
+
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-stethoscope"></i> <span> Prescription</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+      
+        <li><a href="@Url.Action("Prescription", "Prescription", new { area="Patient"})"><i class="fa fa-stethoscope"></i> <span>Prescription List</span></a></li>
+
+    </ul>
+</li>
+
+
+
+

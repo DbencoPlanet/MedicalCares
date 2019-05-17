@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
@@ -18,6 +19,31 @@ namespace MedicalCare.Services
 {
     public class Dotnetdesk : IDotnetdesk
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _context;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IRoles _roles;
+        private readonly SuperAdminDefaultOptions _superAdminDefaultOptions;
+        private readonly AdminDefaultOptions _AdminDefaultOptions;
+
+        public Dotnetdesk(UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            ApplicationDbContext context,
+            SignInManager<ApplicationUser> signInManager,
+            Roles roles,
+            IOptions<SuperAdminDefaultOptions> superAdminDefaultOptions,
+            IOptions<AdminDefaultOptions> AdminDefaultOptions)
+        {
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _context = context;
+            _signInManager = signInManager;
+            _roles = roles;
+            _superAdminDefaultOptions = superAdminDefaultOptions.Value;
+            _AdminDefaultOptions = AdminDefaultOptions.Value;
+        }
+
         public async Task SendEmailBySendGridAsync(string apiKey, string fromEmail, string fromFullName, string subject, string message, string email)
         {
             var client = new SendGridClient(apiKey);
@@ -94,6 +120,81 @@ namespace MedicalCare.Services
             return result;
         }
 
+        public async Task CreateDefaultSuperAdmin()
+        {
+            try
+            {
+                ApplicationUser superAdmin = new ApplicationUser();
+                superAdmin.Email = _superAdminDefaultOptions.Email;
+                superAdmin.UserName = superAdmin.Email;
+                superAdmin.EmailConfirmed = true;
+             
+
+                Type t = superAdmin.GetType();
+                foreach (System.Reflection.PropertyInfo item in t.GetProperties())
+                {
+                    if (item.Name.Contains("Role"))
+                    {
+                        item.SetValue(superAdmin, true);
+                    }
+                }
+
+                await _userManager.CreateAsync(superAdmin, _superAdminDefaultOptions.Password);
+
+                //loop all the roles and then fill to SuperAdmin so he become powerfull
+                foreach (var item in typeof(MedicalCare.MVC.Pages).GetNestedTypes())
+                {
+                    var roleName = item.Name;
+                    if (!await _roleManager.RoleExistsAsync(roleName)) { await _roleManager.CreateAsync(new IdentityRole(roleName)); }
+
+                    await _userManager.AddToRoleAsync(superAdmin, roleName);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        public async Task CreateDefaultAdmin()
+        {
+            try
+            {
+                ApplicationUser Admin = new ApplicationUser();
+                Admin.Email = _AdminDefaultOptions.Email;
+                Admin.UserName = Admin.Email;
+                Admin.EmailConfirmed = true;
+
+
+                Type t = Admin.GetType();
+                foreach (System.Reflection.PropertyInfo item in t.GetProperties())
+                {
+                    if (item.Name.Contains("Role"))
+                    {
+                        item.SetValue(Admin, true);
+                    }
+                }
+
+                await _userManager.CreateAsync(Admin, _AdminDefaultOptions.Password);
+
+                //loop all the roles and then fill to SuperAdmin so he become powerfull
+               
+                    var roleName = "Admin";
+                    if (!await _roleManager.RoleExistsAsync(roleName)) { await _roleManager.CreateAsync(new IdentityRole(roleName)); }
+
+                    await _userManager.AddToRoleAsync(Admin, roleName);
+              
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         //public Task CreateDefaultOrganization(string applicationUserId,
         //    ApplicationDbContext context)
         //{
@@ -105,7 +206,7 @@ namespace MedicalCare.Services
         //    context.SaveChanges();
         //    return Task.CompletedTask;
         //}
-        
+
         public async Task<string> UploadFile(List<IFormFile> files, IHostingEnvironment env)
         {
             var result = "";

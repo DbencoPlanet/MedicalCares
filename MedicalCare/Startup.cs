@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using MedicalCare.Data;
 using MedicalCare.Models;
 using MedicalCare.Services;
+using MedicalCare.Models.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace MedicalCare
 {
@@ -50,9 +52,14 @@ namespace MedicalCare
 
         }
 
+
+       
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+          
+          
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -63,6 +70,7 @@ namespace MedicalCare
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
 
             app.UseStaticFiles();
 
@@ -77,8 +85,9 @@ namespace MedicalCare
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
+
         }
     }
 }

@@ -41,7 +41,7 @@ namespace MedicalCare.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             //    var user1 = _context.Users;
 
@@ -107,6 +107,9 @@ namespace MedicalCare.Controllers
             return View();
         }
 
+
+
+
         //public IActionResult About()
         //{
         //    ViewData["Message"] = "Your application description page.";
@@ -127,4 +130,5 @@ namespace MedicalCare.Controllers
         //}
     }
 }
+
 

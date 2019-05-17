@@ -1,0 +1,138 @@
+﻿@model MedicalCare.Models.ApplicationUser
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        @if (Model != null)
+        {
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="@Model.ProfilePicture" class="img-circle img-responsive" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>@Model.Fullname</p>
+                   <p style="text-wrap:normal;"> <a href="#">
+                        <i class="fa fa-circle text-success"></i>
+                      
+
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
+                                <small>Online as  Super Admin.</small>
+
+                            }
+                            else if (User.IsInRole("Admin"))
+
+                            {
+                                <small>Online as  Admin.</small>
+
+                            }
+
+                            else if (User.IsInRole("Doctor"))
+
+                            {
+                                <small>Online as  Doctor.</small>
+
+                            }
+                            else if (User.IsInRole("Nurse"))
+
+                            {
+                                <small>Online as  Nurse.</small>
+
+                            }
+                            else if (User.IsInRole("Patient"))
+
+                            {
+                                <small>Online as  Patient</small>
+
+                            }
+                            else if (User.IsInRole("Pharmacist"))
+
+                            {
+                                <small>Online as  Pharmacist</small>
+
+                            }
+
+                            else if (User.IsInRole("Laboratorist"))
+
+                            {
+                                <small>Online as  Laboratorist</small>
+
+                            }
+
+                            else if (User.IsInRole("Accountant"))
+
+                            {
+                                <small>Online as  Accountant</small>
+
+                            }
+                            else if (User.IsInRole("Receptionist"))
+
+                            {
+                                <small>Online as  Receptionist</small>
+
+                            }
+                            else if (User.IsInRole("Employee"))
+
+                            {
+                                <small>Online as Employee</small>
+
+                            }
+                            else
+                            {
+                                <small>Online as  Non</small>
+                            }
+                        
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        }
+
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                    {
+                        @Html.Partial("~/Views/Shared/_AdminMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Doctor"))
+                    {
+                        @Html.Partial("~/Views/Shared/_DoctorMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Nurse"))
+                    {
+                        @Html.Partial("~/Views/Shared/_NurseMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Patient"))
+                    {
+                        @Html.Partial("~/Views/Shared/_PatientMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Pharmacist"))
+                    {
+                        @Html.Partial("~/Views/Shared/_PharmacistMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Laboratorist"))
+                    {
+                        @Html.Partial("~/Views/Shared/_LaboratoristMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Accountant"))
+                    {
+                        @Html.Partial("~/Views/Shared/_AccountantMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Receptionist"))
+                    {
+                        @Html.Partial("~/Views/Shared/_ReceptionistMenu.cshtml")
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+                        @Html.Partial("~/Views/Shared/_EmployeeMenu.cshtml")
+                    }
+                }
+                </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

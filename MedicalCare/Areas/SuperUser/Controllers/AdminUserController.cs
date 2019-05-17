@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalCare.Areas.SuperUser.Controllers
 {
+    [Area("SuperUser")]
     public class AdminUserController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -42,17 +43,21 @@ namespace MedicalCare.Areas.SuperUser.Controllers
             return View();
         }
 
-
+        // GET: Admin/Settings/Create
+        public IActionResult CreateAccount()
+        {
+            return View();
+        }
         // POST: /Account/Register
-        [Area("SuperUser")]
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateAccount(RegisterViewModel model)
         {
-            //model.Username = "SuperAdmin";
+            //model.UserName = "SuperAdmin";
             model.Email = "superadmin@super.com";
-            var user = new ApplicationUser { Email = model.Email};
+            var user = new ApplicationUser {UserName = model.Email,Email = model.Email};
             model.Password = "super@123";
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -92,14 +97,20 @@ namespace MedicalCare.Areas.SuperUser.Controllers
                 // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                return RedirectToAction("CreateAdmin");
+                return RedirectToAction("CreateAdmin","AdminUser",new { area = "SuperUser"});
             }
             TempData["error"] = "Contact Administrator";
             return View();
 
         }
 
-         public async Task<ActionResult> CreateAdmin(RegisterViewModel model)
+        // GET: Admin/Settings/Create
+        public IActionResult CreateAdmin()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> CreateAdmin(RegisterViewModel model)
         {
 
             //model.Username = "Admin";

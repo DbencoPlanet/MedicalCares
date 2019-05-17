@@ -30,21 +30,9 @@ namespace MedicalCare.Controllers.Api
 
         // GET: api/Settings/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSetting([FromRoute] int id)
+        public IActionResult GetSetting([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var setting = await _context.Settings.SingleOrDefaultAsync(m => m.Id == id);
-
-            if (setting == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(setting);
+            return Json(new { data = _context.Settings.Where(x => x.Id.Equals(id)).ToList() });
         }
 
         // PUT: api/Settings/5
@@ -83,18 +71,57 @@ namespace MedicalCare.Controllers.Api
         }
 
         // POST: api/Settings
+        //[HttpPost]
+        //public async Task<IActionResult> PostSetting([FromBody] Setting setting)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    _context.Settings.Add(setting);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetSetting", new { id = setting.Id }, setting);
+        //}
+
+
+        // POST: api/Customer
         [HttpPost]
-        public async Task<IActionResult> PostSetting([FromBody] Setting setting)
+        public async Task<IActionResult> PostCustomer([FromBody] Setting customer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Settings.Add(setting);
-            await _context.SaveChangesAsync();
+            try
+            {
 
-            return CreatedAtAction("GetSetting", new { id = setting.Id }, setting);
+                if (customer.Initial == null)
+                {
+                   
+                    _context.Settings.Add(customer);
+
+                    await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, message = "Add new data success." });
+                }
+                else
+                {
+                    _context.Update(customer);
+
+                    await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, message = "Edit data success." });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { success = false, message = ex.Message });
+            }
+
         }
 
         // DELETE: api/Settings/5

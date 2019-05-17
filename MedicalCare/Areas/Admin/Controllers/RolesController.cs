@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalCare.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class RolesController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -63,17 +64,27 @@ namespace MedicalCare.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = new IdentityRole(Name);
-                var roleresult = await _roleManager.CreateAsync(role);
-                if (!roleresult.Succeeded)
-                {
-                    //ModelState.AddModelError("", roleresult.Errors.First());
-                    TempData["error"] = "Creation of new role not successful";
-                    return View();
-                }
-                return RedirectToAction("Index");
+                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(Name));
+                if (result.Succeeded)
+                    return RedirectToAction("Index");
+              
             }
-            return View();
+            return View(Name);
+            //if (ModelState.IsValid)
+            //{
+            //    //var role = new IdentityRole(Name);
+            //    //var roleresult = await _roleManager.CreateAsync(role);
+            //    if (!await _roleManager.RoleExistsAsync(Name))
+            //        await _roleManager.CreateAsync(new IdentityRole(Name));
+            //    //if (!roleresult.Succeeded)
+            //    //{
+            //    //    //ModelState.AddModelError("", roleresult.Errors.First());
+            //    //    TempData["error"] = "Creation of new role not successful";
+            //    //    return View();
+            //    //}
+            //    return RedirectToAction("Index");
+            //}
+            //return View();
         }
 
         // GET: Roles/Edit/5

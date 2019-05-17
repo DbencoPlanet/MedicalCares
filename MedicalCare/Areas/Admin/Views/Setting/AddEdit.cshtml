@@ -1,0 +1,78 @@
+﻿@model MedicalCare.Models.Entities.Setting
+@{
+    Layout = null;
+}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Add / Edit Data</h4>
+</div>
+<form onsubmit="return SubmitAddEdit(this)">
+    <div class="box-body">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="ApplicationTitle" class="control-label"></label>
+            <input asp-for="ApplicationTitle" class="form-control" />
+            <span asp-validation-for="ApplicationTitle" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="control-label"></label>
+            <input asp-for="EmailAddress" class="form-control" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNo" class="control-label"></label>
+            <input asp-for="PhoneNo" class="form-control" />
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Favicon" class="control-label"></label>
+                    <input type="file" name="files" class="form-control" />
+                    <span asp-validation-for="Favicon" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Logo" class="control-label"></label>
+                    <input type="file" name="files" class="form-control" />
+                    <span asp-validation-for="Logo" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Currency" class="control-label"></label>
+                    <input asp-for="Currency" class="form-control" />
+                    <span asp-validation-for="Currency" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Initial" class="control-label"></label>
+                    <input asp-for="Initial" class="form-control" />
+                    <span asp-validation-for="Initial" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> Submit</button>
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
+<script>Ladda.bind('.btn', { timeout: 1000 });</script>
+
+
+
+
+
+
+
+
+

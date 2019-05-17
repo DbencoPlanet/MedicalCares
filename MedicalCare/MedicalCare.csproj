@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-MedicalCare-61251709-60B7-422F-B567-9791BB633D83</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="MVC\Roles.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
@@ -55,7 +59,6 @@
     <Folder Include="Areas\Super\Data\" />
     <Folder Include="Areas\Super\Models\" />
     <Folder Include="Areas\Super\Views\" />
-    <Folder Include="wwwroot\js\views\" />
     <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 

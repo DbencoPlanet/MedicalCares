@@ -28,17 +28,86 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle" src="@appUser.ProfilePicture" alt="User profile picture">
-
+                            <h3 class="profile-username text-center">@appUser.Fullname</h3>
                             <h3 class="profile-username text-center">@appUser.Email</h3>
-                            <p class="text-muted text-center">Member</p>
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>Followers</b> <a class="pull-right">1,322</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Following</b> <a class="pull-right">543</a>
-                                </li>
-                            </ul>
+                            <p class="text-muted text-center">
+
+                                @if (User.IsInRole("SuperAdmin"))
+                                {
+                                    <small>Online as  Super Admin.</small>
+
+                                }
+                                else if (User.IsInRole("Admin"))
+
+                                {
+                                    <small>Online as  Admin.</small>
+
+                                }
+
+                                else if (User.IsInRole("Doctor"))
+
+                                {
+                                    <small>Online as  Doctor.</small>
+
+                                }
+                                else if (User.IsInRole("Nurse"))
+
+                                {
+                                    <small>Online as  Nurse.</small>
+
+                                }
+                                else if (User.IsInRole("Patient"))
+
+                                {
+                                    <small>Online as  Patient</small>
+
+                                }
+                                else if (User.IsInRole("Pharmacist"))
+
+                                {
+                                    <small>Online as  Pharmacist</small>
+
+                                }
+
+                                else if (User.IsInRole("Laboratorist"))
+
+                                {
+                                    <small>Online as  Laboratorist</small>
+
+                                }
+
+                                else if (User.IsInRole("Accountant"))
+
+                                {
+                                    <small>Online as  Accountant</small>
+
+                                }
+                                else if (User.IsInRole("Receptionist"))
+
+                                {
+                                    <small>Online as  Receptionist</small>
+
+                                }
+                                else if (User.IsInRole("Employee"))
+
+                                {
+                                    <small>Online as Employee</small>
+
+                                }
+                                else
+                                {
+                                    <small>Online as  Non</small>
+                                }
+                                
+                            </p>
+                            @*<ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+                <b>Followers</b> <a class="pull-right">1,322</a>
+            </li>
+            <li class="list-group-item">
+                <b>Following</b> <a class="pull-right">543</a>
+            </li>
+        </ul>*@
                             <a href="@Url.Action("ChangePassword", "Manage")" class="btn btn-primary btn-block">
                                 <i class="fa fa-key">
                                     <span>Change Password</span>
@@ -57,6 +126,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#picture" data-toggle="tab">Profile Picture</a></li>
+                        <li class=""><a href="#profile" data-toggle="tab">Profile Details</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="active tab-pane" id="picture">
@@ -83,13 +153,19 @@
                             }
                         </div>
 
+                        <div class="tab-pane" id="profile">
+                            <p><h1>COMING SOON!</h1></p>
+                        </div>
                     </div>
                     <!-- /.tab-content -->
                 </div>
-                <!-- /.nav-tabs-custom -->
             </div>
-            <!-- /.col -->
-        </div>
+                  
+                      
+                        <!-- /.nav-tabs-custom -->
+                    
+                    <!-- /.col -->
+                </div>
         <!-- /.row -->
     </section>
     <!-- /.content -->
